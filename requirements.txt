@@ -1,2 +1,2 @@
 catboost
-sklear
+scikit-learn
