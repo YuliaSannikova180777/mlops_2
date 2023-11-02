@@ -2,6 +2,6 @@
     remote = ssh-storage
 ['remote "ssh-storage"']
     url = ssh://data_srv@192.168.144.134/opt/datasets
-    password = пароль от data-srv
+    password = 1234
     user = angry
     port = 22
