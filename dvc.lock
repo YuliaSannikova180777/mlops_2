@@ -1,0 +1,53 @@
+schema: '2.0'
+stages:
+  get_faetures:
+    cmd: python3 scripts/data_scripts/get_features.py data/raw/train.csv
+    deps:
+    - path: data/raw/train.csv
+      hash: md5
+      md5: fe07a524dd7e68ff4a8d53b2373c3e18
+      size: 3905076
+    - path: scripts/data_scripts/get_features.py
+      hash: md5
+      md5: 7c7290b36536224eadf54402a21137ff
+      size: 1080
+    outs:
+    - path: data/stage1
+      hash: md5
+      md5: 64dda311663ad894b20b823af39ab5b9.dir
+      size: 1939554
+      nfiles: 1
+  fill_na:
+    cmd: python3 scripts/data_scripts/fill_na.py data/stage1/train.csv
+    deps:
+    - path: data/stage1/train.csv
+      hash: md5
+      md5: 4c1b355121ee701379612f341a82288a
+      size: 1939554
+    - path: scripts/data_scripts/fill_na.py
+      hash: md5
+      md5: e69dffa4d1bf8e7f9d1b9b659d0910b6
+      size: 1584
+    outs:
+    - path: data/stage2
+      hash: md5
+      md5: b11c441454337708b215a8b76364799e.dir
+      size: 1502779
+      nfiles: 1
+  text_to_numeric:
+    cmd: python3 scripts/data_scripts/change_text_to_numeric.py data/stage2/train.csv
+    deps:
+    - path: data/stage2/train.csv
+      hash: md5
+      md5: 52be020c0ade150431d24ea2df53b00c
+      size: 1502779
+    - path: scripts/data_scripts/change_text_to_numeric.py
+      hash: md5
+      md5: f09a1da99a765498fab0e259983ad409
+      size: 1393
+    outs:
+    - path: data/stage3
+      hash: md5
+      md5: c9d9c49ffb9435c5b696b0f65d696e39.dir
+      size: 1419850
+      nfiles: 1
